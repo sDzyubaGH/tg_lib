@@ -11,9 +11,14 @@ class Bot {
   }
 
   async getMe() {
-    const query = `${this.TELEGRAM_API}/getMe`
-    const res = await axios.get(query)
-    return res.data
+    console.log()
+    const query = `${this._TELEGRAM_API}/getMe`
+    try {
+      const res = await axios.get(query)
+      return res.data
+    } catch (e) {
+      console.error(e.message)
+    }
   }
 
   async setWebhook(webhookURL) {
@@ -75,7 +80,6 @@ class Bot {
       chat_id: chatId,
       text
     }
-
 
     const response = this._request('sendMessage', options)
       .catch(e => {
