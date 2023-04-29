@@ -6,8 +6,8 @@ export class BaseError extends Error {
 }
 
 export class TelegramError extends BaseError {
-  constructor(errorCode, response) {
-    super(message, response)
+  constructor(message, response) {
+    super('ETELEGRAM', message)
     this.response = response
   }
 }

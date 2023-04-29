@@ -1,3 +1,5 @@
+import FormData from "form-data"
+
 class Document {
   constructor(value, filename = null) {
     this.value = value
@@ -11,9 +13,50 @@ class Document {
     this.filename
       ? formData.append('document', this.value, this.filename)
       : formData.append('document', this.value)
-
     return formData
   }
 }
 
 export default Document
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

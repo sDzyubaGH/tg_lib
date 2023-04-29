@@ -4,7 +4,10 @@ class InlineKeyboardButton {
 
   constructor(text, callback_data) {
     this.text = text
-    this.callback_data = JSON.stringify(callback_data)
+
+    if (typeof (callback_data) === 'object')
+      this.callback_data = JSON.stringify(callback_data)
+    else this.callback_data = callback_data
   }
 }
 
