@@ -4,6 +4,7 @@ import FormData from 'form-data'
 import * as fs from 'fs'
 import download from 'download'
 import ReplyKeyboardRemove from './Types/ReplyKeyboardMarkup/ReplyKeyboardRemove.js'
+import 'dotenv/config'
 
 class Bot {
   constructor(token) {
@@ -23,7 +24,7 @@ class Bot {
 
   async setWebhook(webhookURL) {
     const options = {
-      url: `${webhookURL}/${this._TOKEN}`,
+      url: webhookURL,
       drop_pending_updates: true
     }
     try {
