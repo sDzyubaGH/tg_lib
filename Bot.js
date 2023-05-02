@@ -114,6 +114,8 @@ class Bot {
     return response.data
   }
 
+  async editMessageText(chatId, messageId, text, replyMarkup = null) { }
+
   async sendDocument(chatId, value, filename = null) {
     try {
       // const document = new Document(value, filename)
