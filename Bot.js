@@ -67,8 +67,8 @@ class Bot {
     }
   }
 
-  async sendMessage(chatId, text, optionalParams = { disable_web_page_preview: false, replyMarkup: {}, resize_keyboard: false }) {
-    const { disable_web_page_preview, replyMarkup, resize_keyboard } = optionalParams
+  async sendMessage(chatId, text, optionalParams = { disable_web_page_preview: false, replyMarkup: {}, resize_keyboard: false, parse_mode: null }) {
+    const { disable_web_page_preview, replyMarkup, resize_keyboard, parse_mode } = optionalParams
     const options = {
       chat_id: chatId,
       text,
@@ -86,6 +86,9 @@ class Bot {
     }
     if (disable_web_page_preview) {
       options.disable_web_page_preview = true
+    }
+    if (parse_mode) {
+      options.parse_mode = parse_mode
     }
 
     try {
@@ -114,7 +117,23 @@ class Bot {
     return response.data
   }
 
-  async editMessageText(chatId, messageId, text, replyMarkup = null) { }
+  async editMessageText(chatId, message_id, text, replyMarkup = null, parse_mode = 'HTML') {
+    const options = {
+      chat_id: chatId,
+      text,
+      message_id,
+      parse_mode
+    }
+    if (replyMarkup) {
+      options.reply_markup = replyMarkup
+    }
+    try {
+      const response = await this._request('editMessageText', options)
+      return response.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   async sendDocument(chatId, value, filename = null) {
     try {
