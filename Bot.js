@@ -48,6 +48,21 @@ class Bot {
     return `${url}/bot${this._TOKEN}/${methodName}`
   }
 
+  async deleteMessage(chatId, messageId) {
+    try {
+      if (!chatId || !messageId) {
+        throw new Error('Not enough data to delete message')
+      }
+      const options = {
+        chat_id: chatId,
+        message_id: messageId
+      }
+      const response = await this._request('deleteMessage', options)
+    } catch (error) {
+      throw error
+    }
+  }
+
   async _request(methodName, options = {}) {
     if (!this._TOKEN) {
       throw new FatalError('Telegram bot token not provided!')
