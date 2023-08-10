@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { FatalError, TelegramError } from './src/core/errors.js'
+import { FatalError, TelegramError } from './core/errors.js'
 import FormData from 'form-data'
 import * as fs from 'fs'
 import download from 'download'
-import ReplyKeyboardRemove from './Types/ReplyKeyboardMarkup/ReplyKeyboardRemove.js'
+import ReplyKeyboardRemove from '../Types/ReplyKeyboardMarkup/ReplyKeyboardRemove.js'
 import 'dotenv/config'
 
 class Bot {
