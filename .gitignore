@@ -2,3 +2,5 @@ node_modules/
 test.js
 .DS_Store
 .env
+
+session.sqlite3
